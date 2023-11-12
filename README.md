@@ -1,8 +1,7 @@
 # Blog starter
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a9b962b7-9df1-49db-9b40-e5fedbc8ba9e/deploy-status)](https://app.netlify.com/sites/eleventy-blog-starter/deploys)
 
-View the live demo [here](https://eleventy.rongying.co/), hosted on Cloudflare
+View the live demo [here](https://stencil-demo.pages.dev/), hosted on Cloudflare
 
 ![homepage](blog-v2.png)
 ![darkmode](blog-dark.png)
