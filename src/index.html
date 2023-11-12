@@ -1,15 +1,15 @@
 ---
 layout: base
-title: Дмитрий Фурье
-desc: Заметки, проекты, подкасты и другие странные вещи Димы Фурье
+title: Stencil-Template for 11ty
+desc: A theme for an expert's website. Includes blog, portfolio, podcasts and other necessary features.
 date: 2015-06-04
 changefreq: Weekly
 priority: "0.8"
 ---
 {% include "_partials/about.liquid" %}
 
-<h2 class="text-2xl font-bold">Сделал</h2>
-<h2 class="text-2xl font-bold">Наговорил</h2>
+<h2 class="text-2xl font-bold">Projects</h2>
+<h2 class="text-2xl font-bold">Podcasts</h2>
 <div class="warp pb-4">
   <div class="flex">
 {%- for podcast in collections.podcasts -%}
@@ -31,46 +31,10 @@ priority: "0.8"
 </div>
 </div>
 
-<h2 class="text-2xl font-bold mb-1">Написал</h2>
+<h2 class="text-2xl font-bold mb-1">Blog Posts</h2>
 
 {%- for post in collections.posts-%}
   {% if forloop.last %}
   <p><span class="font-medium">Свежее в блоге:</span><br><a href="{{ post.url }}">{{ post.data.title }}</a></p>
   {% endif %}
 {%- endfor -%}
-<div class="grid grid-flow-col grid-cols-6 grid-rows-6 gap-x-4 place-content-start">
-  <div><h3 class="font-black text-lg">Про Финансы</h3></div>
-    <div><a href="/posts/kak-vesti-uchyot-nalichki-v-biznese-i-ne-svihnutsya/">Как вести учёт налички в бизнесе
-      и не свихнуться</a></div>
-      <div><a href="/posts/bezopasnost-pri-najme-finmenedzhera/">Безопасность при найме финансового менеджера</a></div>
-      <div><h4 class="text-lg">Для <a href="https://zhiza.evotor.ru/">Эвотора</a></h4></div>
-      <div>Совместные цикл статей, о том, как маленький бизнес разбирается с управленкой</div>
-      <div><a
-        href="https://zhiza.evotor.ru/vlozhitsya-i-ne-pozhalet-schitaem-effektivnost-reklamnoj-kampanii-do-eyo-nachala/">Считаем
-        деньги: как вовремя понять, что бизнес идёт не так хорошо, как кажется.</a></div>
-        <div><a
-          href="https://zhiza.evotor.ru/skolko-vy-mozhete-vzyat-iz-kassy-schitaem-dengi-ot-prodazh-do-chistoj-pribyli-2/">Сколько
-          вы можете взять из кассы: считаем деньги от продаж до чистой прибыли</a></div>
-        <div><a href="https://zhiza.evotor.ru/gde-nazhat-chtoby-prodavat-bolshe-ishhem-tochku-rosta-vyruchki/">Где нажать,
-          чтобы продавать больше? Ищем точку роста выручки</a></div>
-        <div><a href="https://zhiza.evotor.ru/kak-vybrat-na-chyom-sekonomit-v-pervuyu-ochered/">Как выбрать, на чём сэкономить
-          в первую очередь</a></div>
-        <div><a
-          href="https://zhiza.evotor.ru/vlozhitsya-i-ne-pozhalet-schitaem-effektivnost-reklamnoj-kampanii-do-eyo-nachala/">Вложиться
-          и не пожалеть: считаем эффективность рекламной кампании до её начала.</a></div>
-        <div><a
-          href="https://zhiza.evotor.ru/peresypali-muki-zarabotali-menshe-uchimsya-kontrolirovat-effektivnost-proizvodstvennyx-zatrat/">Учимся
-          контролировать эффективность производственных затрат</a></div>
-        <div><a
-          href="https://zhiza.evotor.ru/tochka-bezubytochnosti-skolko-nuzhno-prodat-chtoby-vybratsya-iz-minusa/">Точка
-          безубыточности: сколько нужно продать, чтобы выбраться из минуса</a></div>
-        <div><a href="https://zhiza.evotor.ru/skolko-vy-zarabatyvaete-sostavlyaem-finansovyj-prognoz-na-god/">Сколько вы
-          зарабатываете: составляем финансовый прогноз на год</a></div>
-          <div><a href="https://zhiza.evotor.ru/chi-dengi-u-vas-na-schyote/">Чьи деньги у вас на счёте?</a></div>
-          <div><h4 class="text-lg">Для <a href="https://noboring-finance.ru/">Нескучных финансов</a></h4></div>
-          <div><a href="https://noboring-finance.ru/gazeta/5-stadiy">Пять стадий принятия финансового факта</a></div>
-          <div><a href="https://noboring-finance.ru/gazeta/dyra-v-kapitale-2">Что делать если обнаружили дыру в собственном капитале</a></div>
-          <div><a href="https://noboring-finance.ru/gazeta/debitorka">Правила жизни с дебеторкой</a></div>
-          <div><a href="https://noboring-finance.ru/gazeta/ebitda">Что такое EBITDA и зачем она предпринимателю</a></div>
-
-</div>
