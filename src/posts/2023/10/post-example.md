@@ -1,7 +1,7 @@
 ﻿---
 layout: post
-title: Example posts
-desc: Post Description Test
+title: Example post as md file
+desc: Example file in md extention with shortcuts
 date: 2023-10-26
 url: example-post
 cover: "horizontal-mgmt-OG.png"
