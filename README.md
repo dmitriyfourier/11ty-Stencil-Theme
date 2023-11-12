@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a9b962b7-9df1-49db-9b40-e5fedbc8ba9e/deploy-status)](https://app.netlify.com/sites/eleventy-blog-starter/deploys)
 
-View the live demo [here](https://eleventy.rongying.co/), hosted on Netlify
+View the live demo [here](https://eleventy.rongying.co/), hosted on Cloudflare
 
 ![homepage](blog-v2.png)
 ![darkmode](blog-dark.png)
@@ -12,7 +12,7 @@ A blog that still runs without javascript. Hence, no bundlers.
 
 
 ## Features
-- Static Site Gen - Eleventy
+- Static Site Gen — [Eleventy](https://www.11ty.dev/)
 
 - Tailwind CSS v2.0 / Tailwind Typography / Dark Mode
 
@@ -55,7 +55,9 @@ Navigate to localhost:8080 after starting the server.
 ```
 npm start
 ```
+## 404 pages
 
+See the 
 
 ## Deployment
 I using this template with [Cloudflare Pages](https://developers.cloudflare.com/pages/)
