@@ -1,16 +1,15 @@
 {
-    "author": "Дмитрий Фурье",
+    "author": "Dmitriy Fourier",
     "url": "https://furye.ru",
-    "title": "Дмитрий Фурье",
-    "author": "Дмитрий Фурье",
+    "title": "Dmitriy Fourier",
     "description": "Welcome to my blog",
     "email": "dmitriyfurye@pm.me",
-    "github": "https://github.io/dmitriyfourier",
+    //You can add your links to social netwworks//
+    "github": "https://github.com/dmitriyfourier/11ty-Stencil-Template/",
     "twitter-l": "https://twitter.com/DmitriyFourier",
     "twitter-s": "@DmitriyFourier",
     "linkedin": "https://www.linkedin.com/in/rongyingkoh/",
     "telegram-p": "@DmitriyFourier",
-    "telegram-c": "https://t.me/FourierNotesRU",
     "telegram": "https://t.me/FourierNotesRU",
     "linkedin": "https://www.linkedin.com/in/dmitriyfourier/",
     "mastodon": "https://mastodon.ml/@dmitriyfourier",
@@ -31,11 +30,12 @@
     "github":"https://github.com/dmitriyfourier",
     "myshows":"https://myshows.me/DmitriyFourier",
     "untappd":"https://untappd.com/user/DmitriyFourier",
-    "pinterest":"https://ru.pinterest.com/DmitriyFourier/",
+    "pinterest":"",
     "feed": {
-        "subtitle": "Заметки про управление и масштабирование команд, проектов и компаний.",
+        "subtitle": "Feed Subtitle",
         "filename": "feed.xml",
         "path": "/feed/feed.xml",
         "id": "https://furye.ru"
-}
+},
+    "telegram-comments":"CFXMJCTg"
 }
