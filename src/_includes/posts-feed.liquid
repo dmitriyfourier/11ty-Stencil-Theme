@@ -4,8 +4,8 @@
     <meta charset="utf-8">
   	<meta name='viewport' content='width=device-width'>
     {% if pagination.pageNumber > 0 %}
-    <title>{{ title }} × [Страница {{ pagination.pageNumber }}]</title>
-    <meta name='description' content="{{ desc }} × [Страница {{ pagination.pageNumber }}]">
+    <title>{{ title }} × [Page {{ pagination.pageNumber }}]</title>
+    <meta name='description' content="{{ desc }} × [Page {{ pagination.pageNumber }}]">
     {% else %}
     <title>📋 Blog Feed Pages</title>
     <meta name='description' content="{{ desc }}">
@@ -14,8 +14,8 @@
 
     <!--Open Graph-->
     {% if pagination.pageNumber > 0 %}
-      <meta property="og:title" content="{{ title }} × [Страница {{ pagination.pageNumber }}]">
-      <meta property="og:description" content="{{ desc }} × [Страница {{ pagination.pageNumber }}]">
+      <meta property="og:title" content="{{ title }} × [Page {{ pagination.pageNumber }}]">
+      <meta property="og:description" content="{{ desc }} × [Page {{ pagination.pageNumber }}]">
       <meta property="og:image" content="{{ site.url }}/assets/covers/Notes-OG.jpg">
       
      {% else %}
