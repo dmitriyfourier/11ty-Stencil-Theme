@@ -1,0 +1,30 @@
+<nav class="flex justify-stretch mt-8">
+    <div class="inline-flex">
+      {% if page.url != pagination.href.first %}
+        <a href="{{ pagination.href.first }}">
+          <button class="paginator-text" aria-label="Посмотреть посты опубликованные Ранее">
+            ← Ранее
+          </button>
+        </a>
+      {% else %}
+        <button class="paginator-text hidden">
+          ← Ранее
+        </button>
+      {% endif %}
+      
+
+      {% if page.url != pagination.href.last %}
+        <a href="{{ pagination.href.last }}">
+          <button class="paginator-text" aria-label="Посмотреть посты опубликованные позже">
+            Позднее →
+          </button>
+        </a>
+      {% else %}
+        <button class="paginator-text hidden">
+          Позднее →
+        </button>
+      {% endif %}
+      
+    </div>
+
+</nav>

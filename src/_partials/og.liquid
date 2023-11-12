@@ -1,0 +1,13 @@
+﻿<!--Opengraph-->
+  <meta property="og:title" content="{{ data.title }}" />
+  <meta property="og:url" content="{{ page.url }}" />
+  {% if tags %}
+  <meta property="og:image" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
+  <meta property="og:image:secure_url" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
+  {% else %}
+  <meta property="og:image" content="{{ site.url }}/img/default-preview.jpeg" />
+  <meta property="og:image:secure_url" content="{{ site.url }}/img/default-preview.jpeg" />
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="{{ site.twitter-s }}" />
+  <meta name="twitter:creator" content="{{ site.twitter-s }}" />

@@ -1,0 +1,41 @@
+---
+layout: posts-feed
+title: 📋 Blog Posts
+desc:  Small Description for Blog Post Feed
+pagination:
+  data: collections.posts
+  size: 10
+  reverse: true
+  alias: posts
+---
+{% for post in pagination.items %}
+{% if post.data.published %}
+<div class="mb-16" itemscope itemtype="https://schema.org/BlogPosting">
+  <h2 class="text-2xl sm:text-4xl font-bold leading-tight">
+    <a class="link-novisited no-underline hover:underline" href="{{ post.url }}" itemprop="url"><span itemprop="name">{{ post.data.title }}</span></a>
+  </h2>
+  <div>
+  <em><time itemprop="datePublished" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time></em><span
+    class="text-base font-normal"> &middot;  Reading Time ≈ {{ post.templateContent | readTime }} min</span>
+  </div>
+  <div itemprop="articleBody">{{ post.templateContent }}</div>
+
+  <div class="flex flex-nowrap items-center mt-4 text-2xl sm:text-md md:text-lg lg:text-xl xl:text-2xl">
+    <div class="pr-4">
+      {% for tag in post.data.tags %}
+      {% if tag != "posts" %}
+      <span class="pr-2"><a href="/tags/{{ tag | slug }}" class="link-novisited no-underline hover:underline">{{ tag }}</a></span>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+
+  </div>
+
+</div>
+
+{% endif %}
+{% endfor %}
+
+
+{% include "paginator.liquid" %}

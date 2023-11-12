@@ -1,0 +1,6 @@
+﻿user-agent: *
+Disallow: /404*
+Disallow: /tags/*
+Disallow: /_partials/*
+Disallow: /admin/
+Sitemap: https://furye.ru/sitemap.xml

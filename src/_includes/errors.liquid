@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <body class="h-full dark:text-white dark:bg-black">
+        {{ content }}
+
+      <script>
+        document.getElementById("toggleDarkMode").addEventListener("click", function() {
+          if (isDarkMode()) {
+            localStorage.theme = 'light'
+            document.documentElement.classList.remove('dark')
+          } else {
+            localStorage.theme = 'dark'
+            document.documentElement.classList.add('dark')
+          }
+        });
+      </script>
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5K4PFMX');</script>
+<!-- End Google Tag Manager -->
+  </body>
+</html>

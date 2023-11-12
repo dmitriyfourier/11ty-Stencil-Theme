@@ -1,0 +1,47 @@
+---
+layout: blog
+---
+<article class="article-post" itemscope itemtype="https://schema.org/BlogPosting" itemid="{{ url }}">
+<h1 class="mb-4" itemprop="name">
+    {{ title}}
+</h1>
+<div class="mb-4 text-mk-comments">
+    <em><time itemprop="datePublished" datetime="{{ date | dateIso }}">{{ date | dateReadable }}</time></em> •
+    <span class=>Время чтения ≈ {{ content | readTime }} мин.</span>
+</div>
+<div itemprop="articleBody">
+  {{ content }}
+</div>
+</article>
+<!-- # ===== Tags =====  # -->
+<div class="warp flex mt-3 pb-4 text-xs" itemprop="keywords">
+	{% for tag in tags %}
+	  {% if tag != "posts" %}
+		<a class="link-novisited px-3 py-2" href="/tags/{{ tag | slug }}">
+		  <span>{{ tag }}</span>
+		</a>
+	  {% endif %}
+	{% endfor %}
+	</div>
+	<!-- # ===== Previous and Next =====  #-->
+	{%- if collections.posts %}
+	{% assign previousPost = collections.posts | getPreviousCollectionItem: page %}
+	{% assign nextPost = collections.posts | getNextCollectionItem: page %}
+	{%- if nextPost or previousPost %}
+	<hr>
+	<div class="flex flex-row justify-between">
+	  <div class="basis-1/2 justify-self-start">{%- if previousPost %}← <a href="{{ previousPost.url | url }}" class="link-novisited">{{ previousPost.data.title }}</a>{% endif %}</div>
+	  <div class="basis-1/2 justify-self-end">{%- if nextPost %}<a href="{{ nextPost.url | url }}" class="link-novisited">{{ nextPost.data.title }}</a> → {% endif %}</div>
+	</div>
+	{%- endif %}
+	{%- endif %}
+<section class="comments py-4" id="comments">
+  <div class="widget emerge" data-hold="500" style="transition: opacity 500ms ease-out 0s; opacity: 1;">
+    <div class="comments-white visible dark:hidden">
+      <script defer src="https://comments.app/js/widget.js?3" data-comments-app-website="OvICjhJt" data-limit="5"></script>
+    </div>
+    <div class="comments-dark hidden dark:inline">
+    <script defer src="https://comments.app/js/widget.js?3" data-comments-app-website="OvICjhJt" data-limit="5" data-dark="1"></script>
+    </div>
+</div>
+</section>

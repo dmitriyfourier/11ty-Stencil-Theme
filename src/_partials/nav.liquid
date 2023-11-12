@@ -1,0 +1,74 @@
+<nav id="header" class="w-full z-30 top-10 py-1">
+  <div class="w-full flex place-items-start justify-between mt-0 py-2">
+
+    <div id="mobileMenuButton" class="cursor-pointer hidden block mr-6 inline-block left-0 top-0">
+      <i class="las la-bars text-mk-background dark:text-mk-yellow-main text-2xl"></i>
+    </div>
+    <!--     <input class="hidden" type="checkbox" id="menu-toggle"> -->
+
+    <div id="nav-menu" class="sm:flex sm:items-top sm:w-auto w-full order-1 sm:order-1">
+      <nav>
+        <ul class="sm:flex items-center justify-between text-mk-blue dark:text-mk-yellow-main pt-0 sm:pt-0">
+          <li class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
+            <a href="/" class="flex items-center no-underspanne link-novisited no-underline">
+              <span class="hidden sm:inline-block">   <img  src="/assets/img/furye.jpg" class="mr-2 w-10 h-10 rounded-full" alt="Дмитрий Фурье" /></span>
+              <div class="ml-0.5 self-center font-semibold whitespace-nowrap text-mk-background dark:text-mk-white">Дмитрий Фурье</div>
+          </li>
+          <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
+              href="#">Сделал</a></li>
+          <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
+              href="/podcasts/">Наговорил</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="nav-content" class="order-2 sm:order-3 flex flex-wrap flex-row-reverse flex-col-reverse items-top justify-end mr-0">
+      <div id="nav-buttons" class="flex items-center w-full sm:w-full">
+        <div class="px-4">
+          <label id="toggleDarkMode" class="relative inspanne-flex items-center cursor-pointer switch-button">
+            <input type="checkbox" class="sr-only peer">
+            <div class="flex justify-center items-center w-8 h-8 
+              bg-tg-deepdark 
+              shadow-sm
+              shadow-mk-purple-deco
+              dark:shadow-mk-yellow-main
+              rounded-full
+              peer-hover::outspanne-none 
+              peer-hover::ring-2 
+              dark:bg-mk-yellow-main 
+              dark:border-gray-600 
+              peer-checked:bg-mk-yellow-main">
+              <div class="text-mk-yellow-main dark:hidden">
+                <i class="las la-moon"></i>
+              </div>
+              <div class=" text-mk-background hidden dark:visible dark:inline">
+                <i class="las la-sun"></i>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class=""><a href="/posts" class="link-novisited">Блог</a> →</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- <script>
+  var mobileMenuButton = document.getElementById("mobileMenuButton");
+  mobileMenuButton.onclick = function () {
+    document.getElementById("nav-menu").classList.toggle("hidden");
+    document.getElementById("nav-buttons").classList.toggle("flex");
+    document.getElementById("nav-buttons").classList.toggle("flex-col");
+    document.getElementById("nav-buttons").classList.toggle("space-y-2");
+  }
+  // Hide element when click outside nav
+  // var theElementContainer = document.getElementsByTagName("nav")[0];
+  // document.addEventListener('click', function(event) {
+  //   if (!theElementContainer.contains(event.target)) {
+  //     document.getElementById("menu").classList.toggle("hidden");
+  //     document.getElementById("nav-buttons").classList.toggle("flex");
+  //     document.getElementById("nav-buttons").classList.toggle("flex-col");
+  //     document.getElementById("nav-buttons").classList.toggle("space-y-2");
+  //   }
+  // });
+</script>-->

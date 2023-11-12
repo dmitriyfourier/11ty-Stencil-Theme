@@ -1,0 +1,97 @@
+@import "tailwindcss/base";
+@import "/src/assets/styles/normalize.css";
+@import "/src/assets/styles/fonts.css";
+@import "/src/assets/styles/bettertext.css";
+@import "/src/assets/styles/links.css";
+@import "/src/assets/styles/likely.css";
+@import "/src/assets/styles/fotorama.css";
+@import "/src/assets/styles/line-awesome.css";
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
+
+body {
+  margin: calc(10px + 3vh) calc(10px + 2vw);
+ }
+ 
+
+/* tags */
+
+.paginator-text {
+  @apply text-gray-600 font-bold py-2 px-4;
+}
+
+.post-tag {
+  @apply inline-block text-xs rounded-full py-2 px-4 mt-1 mr-1 bg-gray-300 dark:bg-gray-500;
+}
+
+
+/*blockquote*/
+blockquote {
+  @apply border-l-4 border-l-mk-comments dark:border-l-mk-yellow-main;
+}
+
+blockquote > p {
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 1.3rem;
+}
+
+/*comments*/
+.comments{
+  max-width: 840px;
+}
+.comments .widget {
+  position: relative;
+  padding-right: 0.875rem;
+  padding-left: 0.875rem;
+  padding-top: 0.875rem;
+  padding-bottom: .875rem;
+  border-radius: 0.5rem;
+  @apply bg-tg-light dark:bg-tg-dark;
+  @apply border-mk-comments dark:border-tg-deepdark;
+}
+
+.tg-embeded{
+  @apply max-w-lg;
+}
+
+.eleventy-plugin-embed-instagram{
+  @apply w-2/3 max-w-lg;
+}
+
+@media screen and (min-width: 1050px) {
+  figure.aside, p.aside {
+      position: relative;
+      text-align: left;
+      max-width: 200px;
+      margin-left: 4%;
+      margin-top: -5.85em;
+      float: right;
+      clear: right;
+  }
+}
+ figure.aside, p.aside {
+  line-height: 1.4;
+  font-size: 0.875em;
+  @apply text-mk-comments dark:text-mk-white;
+}
+
+
+  figure.aside{
+    max-width: 200px;
+  }
+
+
+div.warp {
+  @apply overflow-x-auto;
+}
+
+ul.everything li {
+  transform: translateX(0em);
+  animation: fixlists 1s;
+  padding-bottom: .8em;
+  padding-right: 2.5em;
+}
