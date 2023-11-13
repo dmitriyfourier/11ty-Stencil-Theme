@@ -253,6 +253,8 @@ body {
   kbd,
   pre,
   samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
+    font-family: monospace,monospace;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+    @apply text-social-github-dark bg-social-github-light p-0.5;
   }

@@ -109,26 +109,14 @@ In pure Markdown, code blocks are separated by 4 spaces at the beginning of each
 But in GitHub-Flavored Markdown (GFM for short) there is a more convenient way: put three apostrophes (on the letter Yo) before and after the code. You can also specify the language of the source code.
 
 ```html
-<nav class="nav nav-primary">
-  <ul>
-    <li class="tab-conversation active">
-      <a href="#" data-role="post-count" class="publisher-nav-color" data-nav="conversation">
-        <span class="comment-count">0 комментариев</span>
-        <span class="comment-count-placeholder">Комментарии</span>
-      </a>
-    </li>
-    <li class="dropdown user-menu" data-role="logout">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <span class="dropdown-toggle-wrapper">
-          <span>
-            Войти
-          </span>
-        </span>
-        <span class="caret"></span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<div>
+<p>Тестовый тег<p>
+</div>
+```
+
+```md
+### Заголовок
+Текст
 ```
 
 The best part is that you don't need to replace angle brackets `< >` and ampersand `&` with their html-essences in the code.

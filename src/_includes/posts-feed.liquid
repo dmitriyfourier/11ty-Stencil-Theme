@@ -1,83 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-  	<meta name='viewport' content='width=device-width'>
-    {% if pagination.pageNumber > 0 %}
-    <title>{{ title }} × [Page {{ pagination.pageNumber }}]</title>
-    <meta name='description' content="{{ desc }} × [Page {{ pagination.pageNumber }}]">
-    {% else %}
-    <title>📋 Blog Feed Page</title>
-    <meta name='description' content="{{ desc }}">
-    {% endif %}
-    <meta name="author" content="{{ site.author }}">
 
-    <!--Open Graph-->
-    {% if pagination.pageNumber > 0 %}
-      <meta property="og:title" content="{{ title }} × [Page {{ pagination.pageNumber }}]">
-      <meta property="og:description" content="{{ desc }} × [Page {{ pagination.pageNumber }}]">
-      <meta property="og:image" content="{{ site.url }}/assets/covers/Notes-OG.jpg">
-      
-     {% else %}
-     <meta property="og:title" content="{{ title }}">
-     <meta property="og:description" content="{{ desc }}">
-     <meta property="og:image" content="{{ site.url }}/assets/covers/Blog-OG.jpg">
-    {% endif %}
-    <meta property="og:site_name" content="furye.ru">
-    <meta property="og:url" content="{{ site.url }}{{ page.url | url }}">
-    <meta property="og:type" content="object">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="628">
-  
-    <!--links-->
-    <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
-     {% include "_partials/fonts.liquid" %}
-      {% include "_partials/favicons.liquid" %}
-      <link rel="me" href="{{ site.mastodon }}">
-    <!--styles-->
-    <link href="/assets/styles/tailwind.css" rel="stylesheet" />
-    <link href="/assets/styles/default.min.css" rel="stylesheet" />
-    <script>
-      const isDarkMode = () => localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      if (isDarkMode()) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-    </script>
-  </head>
- 
-<body class="text-mk-background bg-white dark:text-mk-white dark:bg-mk-background"> 
-    <header>
-<nav id="header" class="w-full z-30 top-10 py-1">
-  <div class="w-full flex place-items-start justify-between mt-0 py-2">
+<head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width'>
+  {% if pagination.pageNumber > 0 %}
+  <title>{{ title }} × [Page {{ pagination.pageNumber }}]</title>
+  <meta name='description' content="{{ desc }} × [Page {{ pagination.pageNumber }}]">
+  {% else %}
+  <title>📋 Blog Feed Page</title>
+  <meta name='description' content="{{ desc }}">
+  {% endif %}
+  <meta name="author" content="{{ site.author }}">
 
-    <div id="mobileMenuButton" class="cursor-pointer hidden block mr-6 inline-block left-0 top-0">
-      <i class="las la-bars text-mk-background dark:text-mk-yellow-main text-2xl"></i>
-    </div>
-    <!--     <input class="hidden" type="checkbox" id="menu-toggle"> -->
+  <!--Open Graph-->
+  {% if pagination.pageNumber > 0 %}
+  <meta property="og:title" content="{{ title }} × [Page {{ pagination.pageNumber }}]">
+  <meta property="og:description" content="{{ desc }} × [Page {{ pagination.pageNumber }}]">
+  <meta property="og:image" content="{{ site.url }}/assets/covers/Notes-OG.jpg">
 
-    <div id="nav-menu" class="sm:flex sm:items-top sm:w-auto w-full order-1 sm:order-1">
-      <nav>
-        <ul class="sm:flex items-center justify-between text-mk-blue dark:text-mk-yellow-main pt-0 sm:pt-0">
-          <li class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
-            <span class="flex items-center">
-              <div class="ml-0.5 self-center font-semibold whitespace-nowrap text-mk-background dark:text-mk-white">Blog Feed Page</div></span>
-          </li>
-          <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
-              href="#"></a></li>
-          <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
-              href="/podcasts/"></a></li>
-        </ul>
-      </nav>
-    </div>
+  {% else %}
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:image" content="{{ site.url }}/assets/covers/Blog-OG.jpg">
+  {% endif %}
+  <meta property="og:site_name" content="furye.ru">
+  <meta property="og:url" content="{{ site.url }}{{ page.url | url }}">
+  <meta property="og:type" content="object">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
 
-    <div id="nav-content" class="order-2 sm:order-3 flex flex-wrap flex-row-reverse flex-col-reverse items-top justify-end mr-0">
-      <div id="nav-buttons" class="flex items-center w-full sm:w-full">
-        <div class="px-4">
-          <label id="toggleDarkMode" class="relative inspanne-flex items-center cursor-pointer switch-button">
-            <input type="checkbox" class="sr-only peer">
-            <div class="flex justify-center items-center w-8 h-8 
+  <!--links-->
+  <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
+  {% include "_partials/fonts.liquid" %}
+  {% include "_partials/favicons.liquid" %}
+  <link rel="me" href="{{ site.mastodon }}">
+  <!--styles-->
+  <link href="/assets/styles/tailwind.css" rel="stylesheet" />
+  <link href="/assets/styles/prism.min.css" rel="stylesheet" />
+  <script>
+    const isDarkMode = () => localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+      '(prefers-color-scheme: dark)').matches);
+    if (isDarkMode()) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+</head>
+
+<body class="text-mk-background bg-white dark:text-mk-white dark:bg-mk-background">
+  <header>
+    <nav id="header" class="w-full z-30 top-10 py-1">
+      <div class="w-full flex place-items-start justify-between mt-0 py-2">
+
+        <div id="mobileMenuButton" class="cursor-pointer hidden block mr-6 inline-block left-0 top-0">
+          <i class="las la-bars text-mk-background dark:text-mk-yellow-main text-2xl"></i>
+        </div>
+        <!--     <input class="hidden" type="checkbox" id="menu-toggle"> -->
+
+        <div id="nav-menu" class="sm:flex sm:items-top sm:w-auto w-full order-1 sm:order-1">
+          <nav>
+            <ul class="sm:flex items-center justify-between text-mk-blue dark:text-mk-yellow-main pt-0 sm:pt-0">
+              <li class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
+                <span class="flex items-center">
+                  <div class="ml-0.5 self-center font-semibold whitespace-nowrap text-mk-background dark:text-mk-white">
+                    Blog Feed Page</div>
+                </span>
+              </li>
+              <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
+                  href="#"></a></li>
+              <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
+                  href="/podcasts/"></a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div id="nav-content"
+          class="order-2 sm:order-3 flex flex-wrap flex-row-reverse flex-col-reverse items-top justify-end mr-0">
+          <div id="nav-buttons" class="flex items-center w-full sm:w-full">
+            <div class="px-4">
+              <label id="toggleDarkMode" class="relative inspanne-flex items-center cursor-pointer switch-button">
+                <input type="checkbox" class="sr-only peer">
+                <div class="flex justify-center items-center w-8 h-8 
               bg-tg-deepdark 
               shadow-sm
               shadow-mk-purple-deco
@@ -88,21 +93,21 @@
               dark:bg-mk-yellow-main 
               dark:border-gray-600 
               peer-checked:bg-mk-yellow-main">
-              <div class="text-mk-yellow-main dark:hidden">
-                <i class="las la-moon"></i>
-              </div>
-              <div class=" text-mk-background hidden dark:visible dark:inline">
-                <i class="las la-sun"></i>
-              </div>
+                  <div class="text-mk-yellow-main dark:hidden">
+                    <i class="las la-moon"></i>
+                  </div>
+                  <div class=" text-mk-background hidden dark:visible dark:inline">
+                    <i class="las la-sun"></i>
+                  </div>
+                </div>
+              </label>
             </div>
-          </label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</nav>
+    </nav>
 
-<!-- <script>
+    <!-- <script>
   var mobileMenuButton = document.getElementById("mobileMenuButton");
   mobileMenuButton.onclick = function () {
     document.getElementById("nav-menu").classList.toggle("hidden");
@@ -121,46 +126,52 @@
   //   }
   // });
 </script>-->
-    </header>
-      <main class="">
-        
-        {{ content }}
-      
-      </main>
-      
-<footer class="mt-4">
-  <div class="mx-auto  pb-10">
+  </header>
+  <main class="">
+
+    {{ content }}
+
+  </main>
+
+  <footer class="mt-4">
+    <div class="mx-auto  pb-10">
 
       <!---->
       <div class="flex flex-wrap content-center">
-        <div class="flex items-center link-novisited no-underline hover:text-social-mastodon dark:hover:text-social-mastodon mr-6">
+        <div
+          class="flex items-center link-novisited no-underline hover:text-social-mastodon dark:hover:text-social-mastodon mr-6">
           <i class="lab la-mastodon text-2xl"></i>
           <a rel="me" href="{{ site.mastodon }}" class="link-novisited">Mastodon</a>
         </div>
 
-        <div class="flex items-center link-novisited no-underline hover:text-social-linkedin dark:hover:text-social-linkedin mr-6">
+        <div
+          class="flex items-center link-novisited no-underline hover:text-social-linkedin dark:hover:text-social-linkedin mr-6">
           <i class="lab la-linkedin text-2xl no-underline"></i>
-            <a href="{{ site.linkedin }}" class="link-novisited">LinkedIn</a>
+          <a href="{{ site.linkedin }}" class="link-novisited">LinkedIn</a>
         </div>
 
-        <div class="flex items-center link-novisited no-underline hover:text-social-instagram dark:hover:text-social-instagram mr-6">
+        <div
+          class="flex items-center link-novisited no-underline hover:text-social-instagram dark:hover:text-social-instagram mr-6">
           <i class="lab la-instagram text-2xl no-underline"></i>
-            <a href="{{ site.steam }}" class="link-novisited">Instagram</a>
+          <a href="{{ site.steam }}" class="link-novisited">Instagram</a>
         </div>
 
-        <div class="flex items-center link-novisited no-underline hover:text-social-youtube dark:hover:text-social-youtube mr-6">
+        <div
+          class="flex items-center link-novisited no-underline hover:text-social-youtube dark:hover:text-social-youtube mr-6">
           <i class="lab la-youtube text-2xl no-underline"></i>
           <a href="{{ site.youtube }}" class="link-novisited">YouTube</a>
         </div>
 
-        <div class="flex items-center link-novisited no-underline hover:text-social-telegram dark:hover:text-social-telegram mr-6">
+        <div
+          class="flex items-center link-novisited no-underline hover:text-social-telegram dark:hover:text-social-telegram mr-6">
           <i class="lab la-telegram text-2xl no-underline">
             <a href="{{ site.telegram }}" class="link-novisited"></i>Telegram</a>
         </div>
 
-        <div class="flex items-center sm:grow link-novisited no-underline hover:text-social-epicgames dark:hover:text-social-steam-dark mr-6">
+        <div
+          class="flex items-center sm:grow link-novisited no-underline hover:text-social-epicgames dark:hover:text-social-steam-dark mr-6">
           <i class="lab la-steam text-2xl no-underline"></i>
-            <a href="{{ site.steam }}" class="link-novisited">Стим</a>
+          <a href="{{ site.steam }}" class="link-novisited">Стим</a>
         </div>
         <div class="flex items-center link-novisited no-underline hover:text-mk-background">
           <a href="/donation">
@@ -170,25 +181,27 @@
             </button></a>
         </div>
       </div>
-     
+
       <p class="text-sm py-2">
         <!--Adding Site Author & Copyright-->
         <span class="space-out-bottom-mili-xs">© {{ site.author }} × </span>
         <!--Add Date and Copyright-->
         <span>2017 — {% year %}</span> </p>
-  </div>
-</footer>
+    </div>
+  </footer>
 
-      <script>
-        document.getElementById("toggleDarkMode").addEventListener("change", function() {
-          if (isDarkMode()) {
-            localStorage.theme = 'light'
-            document.documentElement.classList.remove('dark')
-          } else {
-            localStorage.theme = 'dark'
-            document.documentElement.classList.add('dark')
-          }
-        });
-      </script>
-  </body>
+  <script>
+    document.getElementById("toggleDarkMode").addEventListener("change", function () {
+      if (isDarkMode()) {
+        localStorage.theme = 'light'
+        document.documentElement.classList.remove('dark')
+      } else {
+        localStorage.theme = 'dark'
+        document.documentElement.classList.add('dark')
+      }
+    });
+  </script>
+  <script src="/assets/scripts/prism.js"></script>
+</body>
+
 </html>

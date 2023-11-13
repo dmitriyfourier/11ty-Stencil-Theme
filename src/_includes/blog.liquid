@@ -35,7 +35,7 @@
   <link rel="me" href="{{ site.mastodon }}">
   <!--styles-->
   <link href="/assets/styles/tailwind.css" rel="stylesheet" />
-    <link href="/assets/styles/default.min.css" rel="stylesheet" />
+    <link href="/assets/styles/prism.min.css" rel="stylesheet" />
   <script>
     const isDarkMode = () => localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
       '(prefers-color-scheme: dark)').matches);
@@ -195,9 +195,8 @@
   </script>
   
   <script src="/assets/scripts/jquery.min.js"></script>
-  <script src="/assets/scripts/highlight.min.js"></script>
+  <script src="/assets/scripts/prism.js"></script>
   <script src="/assets/scripts/fotorama.min.js"></script>
-  <script>hljs.highlightAll();</script>
 </body>
 
 </html>
