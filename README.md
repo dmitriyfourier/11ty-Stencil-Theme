@@ -18,6 +18,8 @@ A blog that still runs without javascript. Hence, no bundlers.
 - Create excerpts using the `<!-- excerpt -->`
 
 - Custom ReadTime filter
+- 
+- Comments for posts made with [comments.app](https://comments.app/) for [Telegram Messenger](https://telegram.org/) ×  See `_partials/comments.liquid` 
 
 - 404 page
 
