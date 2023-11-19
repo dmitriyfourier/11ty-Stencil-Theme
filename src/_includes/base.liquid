@@ -7,9 +7,9 @@
 
   <title>{{ title }}</title>
   <meta name='description' content="{{ desc }}">
+   {% include "_partials/fonts.liquid" %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
-  <meta name="author" content="{{ site.author }}">
-  {% include "_partials/fonts.liquid" %}
+  <meta name="author" content="{{ site.author.name }}">
   {% include "_partials/favicons.liquid" %}
 <!--Opengraph-->
   <meta property="og:title" content="{{ data.title }}" />
@@ -123,56 +123,7 @@
 
   </main>
 
-<footer class="mt-4">
-  <div class="mx-auto  pb-10">
-
-      <!---->
-      <div class="flex flex-wrap content-center">
-        <div class="flex items-center link-novisited no-underline hover:text-social-mastodon dark:hover:text-social-mastodon mr-6">
-          <i class="lab la-mastodon text-2xl"></i>
-          <a rel="me" href="{{ site.mastodon }}" class="link-novisited">Mastodon</a>
-        </div>
-
-        <div class="flex items-center link-novisited no-underline hover:text-social-linkedin dark:hover:text-social-linkedin mr-6">
-          <i class="lab la-linkedin text-2xl no-underline"></i>
-            <a href="{{ site.linkedin }}" class="link-novisited">LinkedIn</a>
-        </div>
-
-        <div class="flex items-center link-novisited no-underline hover:text-social-instagram dark:hover:text-social-instagram mr-6">
-          <i class="lab la-instagram text-2xl no-underline"></i>
-            <a href="{{ site.steam }}" class="link-novisited">Instagram</a>
-        </div>
-
-        <div class="flex items-center link-novisited no-underline hover:text-social-youtube dark:hover:text-social-youtube mr-6">
-          <i class="lab la-youtube text-2xl no-underline"></i>
-          <a href="{{ site.youtube }}" class="link-novisited">YouTube</a>
-        </div>
-
-        <div class="flex items-center link-novisited no-underline hover:text-social-telegram dark:hover:text-social-telegram mr-6">
-          <i class="lab la-telegram text-2xl no-underline">
-            <a href="{{ site.telegram }}" class="link-novisited"></i>Telegram</a>
-        </div>
-
-        <div class="flex items-center sm:grow link-novisited no-underline hover:text-social-epicgames dark:hover:text-social-steam-dark mr-6">
-          <i class="lab la-steam text-2xl no-underline"></i>
-            <a href="{{ site.steam }}" class="link-novisited">Steam</a>
-        </div>
-        <div class="flex items-center link-novisited no-underline hover:text-mk-background">
-          <a href="/donation">
-            <button class="outline outline-offset-2 outline-1 rounded">
-              <div class="px-1 flex items-center">
-                <i class="text-2xl las la-piggy-bank"></i></div>
-            </button></a>
-        </div>
-      </div>
-     
-      <p class="text-sm py-2">
-        <!--Adding Site Author & Copyright-->
-        <span class="space-out-bottom-mili-xs">© {{ site.author }} × </span>
-        <!--Add Date and Copyright-->
-        <span>2017 — {% year %}</span> </p>
-  </div>
-</footer>
+{% include "_partials/footer.liquid" %}
   <script>
     document.getElementById("toggleDarkMode").addEventListener("change", function () {
       if (isDarkMode()) {

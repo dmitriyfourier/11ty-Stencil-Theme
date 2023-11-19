@@ -1,5 +1,5 @@
 {
-  "name": "Dmitriy Fourier's _site",
+  "name": "Stencil Theme × 11ty",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "build": "npx @11ty/eleventy & npx tailwindcss -i ./tailwind.css -o _site/assets/styles/tailwind.css --minify"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dmitriy Fourier",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
