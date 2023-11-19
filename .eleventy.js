@@ -6,12 +6,11 @@ const img2picture = require('eleventy-plugin-img2picture')
 const fs = require("fs");
 const Image = require("@11ty/eleventy-img");
 const embedEverything = require("eleventy-plugin-embed-everything");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
 moment.locale('en')
 
 module.exports = function(eleventyConfig) {
   // Plugins
-  eleventyConfig.addPlugin(embedEverything);
+  eleventyConfig.addPlugin(embedEverything)
   eleventyConfig.addPlugin(syntaxHighlight)
   eleventyConfig.addFilter('dateIso', date => {
     return moment(date).toISOString()
@@ -35,9 +34,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/browserconfig.xml')
   eleventyConfig.addPassthroughCopy('src/CNAME')
   eleventyConfig.addPassthroughCopy('src/robots.txt')
-
-  // rss settings
-  eleventyConfig.addPlugin(pluginRss);
 
   // To create excerpts
   eleventyConfig.setFrontMatterParsingOptions({
@@ -80,8 +76,8 @@ module.exports = function(eleventyConfig) {
     })
   })
 
-const md = markdownIt({ html: true, linkify: true })
- /*md.use(markdownItAnchor, { 
+  const md = markdownIt({ html: true, linkify: true })
+  /*md.use(markdownItAnchor, { 
     level: [1, 2], 
     permalink: markdownItAnchor.permalink.headerLink({ 
       safariReaderFix: true,
@@ -95,52 +91,52 @@ const md = markdownIt({ html: true, linkify: true })
   eleventyConfig.setLibrary('md', md)
   // Open graph generation
   eleventyConfig.addFilter('splitlines', function(input) {
-    const parts = input.split(' ');
+    const parts = input.split(' ')
     const lines = parts.reduce(function(prev, current) {
 
-    if (!prev.length) {
-        return [current];
-    }
+      if (!prev.length) {
+        return [current]
+      }
     
-    let lastOne = prev[prev.length - 1];
+      let lastOne = prev[prev.length - 1]
 
-    if (lastOne.length + current.length > 19) {
-        return [...prev, current];
-    }
+      if (lastOne.length + current.length > 19) {
+        return [...prev, current]
+      }
 
-    prev[prev.length - 1] = lastOne + ' ' + current;
+      prev[prev.length - 1] = lastOne + ' ' + current
 
-    return prev;
-    }, []);
+      return prev
+    }, [])
 
-    return lines;
-});
-// Conver og images from SVG to JPG
-eleventyConfig.on('afterBuild', () => {
-  const socialPreviewImagesDir = "_site/assets/img/og/";
-  fs.readdir(socialPreviewImagesDir, function (err, files) {
+    return lines
+  })
+  // Conver og images from SVG to JPG
+  eleventyConfig.on('afterBuild', () => {
+    const socialPreviewImagesDir = '_site/assets/img/og/'
+    fs.readdir(socialPreviewImagesDir, function (err, files) {
       if (files.length > 0) {
-          files.forEach(function (filename) {
-              if (filename.endsWith(".svg")) {
+        files.forEach(function (filename) {
+          if (filename.endsWith('.svg')) {
 
-                  let imageUrl = socialPreviewImagesDir + filename;
-                  Image(imageUrl, {
-                      formats: ["jpeg"],
-                      outputDir: "./" + socialPreviewImagesDir,
-                      filenameFormat: function (id, src, width, format, options) {
+            let imageUrl = socialPreviewImagesDir + filename
+            Image(imageUrl, {
+              formats: ['jpeg'],
+              outputDir: './' + socialPreviewImagesDir,
+              filenameFormat: function (id, src, width, format, options) {
 
-                          let outputFilename = filename.substring(0, (filename.length-4));
+                let outputFilename = filename.substring(0, (filename.length-4))
                       
-                          return `${outputFilename}.${format}`;
-
-                      }
-                  });
+                return `${outputFilename}.${format}`
 
               }
-          })
+            })
+
+          }
+        })
       }
+    })
   })
-});
   // aside notes
   eleventyConfig.addLiquidShortcode('aside', (text,) => {
     return `<p class="aside">${text}</p>`

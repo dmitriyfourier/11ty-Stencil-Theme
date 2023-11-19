@@ -2,6 +2,7 @@ import harmonyPalette from "@evilmartians/harmony/tailwind";
 module.exports = {
   theme: {
     colors: {
+      ...harmonyPalette,
       // ...
       'social': {
         facebook: '#1877f2',
@@ -92,7 +93,6 @@ module.exports = {
   content: ['./src/**/*.md', './src/**/*.html', './src/_includes/**/*.liquid', './node_modules/flowbite/**/*.js'],
   plugins: [
     require('@tailwindcss/typography'),
-    require('flowbite/plugin')
   ],
 }
 
