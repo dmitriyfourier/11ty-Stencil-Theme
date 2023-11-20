@@ -4,28 +4,49 @@
 <head>
   <meta charset="utf-8">
   <meta name='viewport' content='width=device-width'>
+<!--Fonts-->
+  {% include "_partials/fonts.liquid" %}
 
-  <title>{{ title }}</title>
-  <meta name='description' content="{{ desc }}">
-   {% include "_partials/fonts.liquid" %}
-  <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
-  <meta name="author" content="{{ site.author.name }}">
+<!--Main data-->
+<title>{{ title }}</title>
+<meta name='description' content="{{ desc }}">
+<meta name="author" content="{{ site.author.name }}">
+
+<!--Favicons-->
   {% include "_partials/favicons.liquid" %}
+
 <!--Opengraph-->
-  <meta property="og:title" content="{{ data.title }}" />
-  <meta property="og:url" content="{{ page.url }}" />
-  {% if tags %}
-  <meta property="og:image" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
-  <meta property="og:image:secure_url" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
-  {% else %}
-  <meta property="og:image" content="{{ site.url }}/img/default-preview.jpeg" />
-  <meta property="og:image:secure_url" content="{{ site.url }}/img/default-preview.jpeg" />
-  {% endif %}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="{{ site.twitter-s }}" />
-  <meta name="twitter:creator" content="{{ site.twitter-s }}" />
-  <link rel="me" href="{{ site.mastodon }}">
+<meta property="og:title" content="{{ data.title }}" />
+<meta property="og:url" content="{{ page.url }}" />
+{% if tags %}
+<meta property="og:image" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
+<meta property="og:image:secure_url" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
+{% else %}
+<meta property="og:image" content="{{ site.url }}/img/default-preview.jpeg" />
+<meta property="og:image:secure_url" content="{{ site.url }}/img/default-preview.jpeg" />
+{% endif %}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="{{ site.twitter-s }}" />
+<meta name="twitter:creator" content="{{ site.twitter-s }}" />
+<link rel="me" href="{{ site.mastodon }}">
+
+  <!--Schema Org-->
+  <meta name="description" content="{{ desc }}" />
+  <meta name="application-name" content="{{ site.title }}">
+  <meta name="generator" content="11ty">
+  <link href="{{ site.url }}{{ page.url | url }}" rel="canonical">
+
+  <!--Others-->
+  <link href="/manifest.json" rel="manifest" />
+  <link href="/humans.txt" rel="author">
+  <link href="/sitemap.xml" rel="sitemap" type="application/xml">
+
+  <!-- Feeds -->
+  <link rel="alternate" href="{{ site.url }}/feed/feed.xml" type="application/rss+xml" title="RSS">
+  <link rel="alternate" href="{{ site.url }}/feed/atom.xml" type="application/atom+xml" title="Atom 0.3">
+
   <!--styles-->
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
   <link href="/assets/styles/tailwind.css" rel="stylesheet" />
   
   <!--Scripts-->
@@ -118,11 +139,8 @@
 </script>-->
   </header>
   <main>
-
     {{ content }}
-
   </main>
-
 {% include "_partials/footer.liquid" %}
   <script>
     document.getElementById("toggleDarkMode").addEventListener("change", function () {
