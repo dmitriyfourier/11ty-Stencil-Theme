@@ -109,7 +109,7 @@ Using [postcss-minify](https://github.com/jake-low/postcss-minify)
 
 **Input:**
 
-```html
+```CSS
 body {
   /* make it big and red */
   font-size: large;
@@ -117,7 +117,7 @@ body {
 }
 ```
 **Output:**
-```html
+```CSS
 body{font-size:large;color:red}
 ```
 
