@@ -1,56 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--Fonts-->
+    {% include "_partials/fonts.liquid" %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name='viewport' content='width=device-width'>
-<!--Fonts-->
-  {% include "_partials/fonts.liquid" %}
+    <!--Main data-->
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ desc }}" />
+    <meta name="author" content="{{ site.author.name }}" />
 
-<!--Main data-->
-<title>{{ title }}</title>
-<meta name='description' content="{{ desc }}">
-<meta name="author" content="{{ site.author.name }}">
+    <!--Favicons-->
+    {% include "_partials/favicons.liquid" %}
 
-<!--Favicons-->
-  {% include "_partials/favicons.liquid" %}
+    <!--Opengraph-->
+    <meta property="og:title" content="{{ data.title }}" />
+    <meta property="og:url" content="{{ page.url }}" />
+    {% if tags %}
+    <meta
+      property="og:image"
+      content="{{ site.url }}/assets/img/og/{{
+        data.title | slug
+      }}-preview.jpeg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="{{ site.url }}/assets/img/og/{{
+        data.title | slug
+      }}-preview.jpeg"
+    />
+    {% else %}
+    <meta
+      property="og:image"
+      content="{{ site.url }}/img/default-preview.jpeg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="{{ site.url }}/img/default-preview.jpeg"
+    />
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="{{ site.twitter - s }}" />
+    <meta name="twitter:creator" content="{{ site.twitter - s }}" />
+    <link rel="me" href="{{ site.mastodon }}" />
 
-<!--Opengraph-->
-<meta property="og:title" content="{{ data.title }}" />
-<meta property="og:url" content="{{ page.url }}" />
-{% if tags %}
-<meta property="og:image" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
-<meta property="og:image:secure_url" content="{{ site.url }}/assets/img/og/{{ data.title | slug }}-preview.jpeg" />
-{% else %}
-<meta property="og:image" content="{{ site.url }}/img/default-preview.jpeg" />
-<meta property="og:image:secure_url" content="{{ site.url }}/img/default-preview.jpeg" />
-{% endif %}
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="{{ site.twitter-s }}" />
-<meta name="twitter:creator" content="{{ site.twitter-s }}" />
-<link rel="me" href="{{ site.mastodon }}">
+    <!--Schema Org-->
+    <meta name="description" content="{{ desc }}" />
+    <meta name="application-name" content="{{ site.title }}" />
+    <meta name="generator" content="11ty" />
+    <link href="{{ site.url }}{{ page.url | url }}" rel="canonical" />
 
-  <!--Schema Org-->
-  <meta name="description" content="{{ desc }}" />
-  <meta name="application-name" content="{{ site.title }}">
-  <meta name="generator" content="11ty">
-  <link href="{{ site.url }}{{ page.url | url }}" rel="canonical">
+    <!--Others-->
+    <link href="/manifest.json" rel="manifest" />
+    <link href="/humans.txt" rel="author" />
+    <link href="/sitemap.xml" rel="sitemap" type="application/xml" />
 
-  <!--Others-->
-  <link href="/manifest.json" rel="manifest" />
-  <link href="/humans.txt" rel="author">
-  <link href="/sitemap.xml" rel="sitemap" type="application/xml">
+    <!-- Feeds -->
+    <link
+      rel="alternate"
+      href="{{ site.url }}/feed/feed.xml"
+      type="application/rss+xml"
+      title="RSS"
+    />
+    <link
+      rel="alternate"
+      href="{{ site.url }}/feed/atom.xml"
+      type="application/atom+xml"
+      title="Atom 0.3"
+    />
 
-  <!-- Feeds -->
-  <link rel="alternate" href="{{ site.url }}/feed/feed.xml" type="application/rss+xml" title="RSS">
-  <link rel="alternate" href="{{ site.url }}/feed/atom.xml" type="application/atom+xml" title="Atom 0.3">
+    <!--styles-->
+    <link
+      href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+      rel="stylesheet"
+    />
+    <link href="/assets/styles/tailwind.css" rel="stylesheet" />
 
-  <!--styles-->
-  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
-  <link href="/assets/styles/tailwind.css" rel="stylesheet" />
-  
-  <!--Scripts-->
-  <script>
+    <!--Scripts-->
+    <!-- <script>
     const isDarkMode = () => localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
       '(prefers-color-scheme: dark)').matches);
     if (isDarkMode()) {
@@ -58,103 +86,140 @@
     } else {
       document.documentElement.classList.remove('dark')
     }
-  </script>
-</head>
+  </script>-->
+  </head>
 
-<body class="dark:text-mk-white dark:bg-mk-background">
-  <header>
-    <nav id="header" class="w-full z-30 top-10 py-1">
-  <div class="w-full flex place-items-start justify-between mt-0 py-2">
-
-    <div id="mobileMenuButton" class="cursor-pointer hidden block mr-6 inline-block left-0 top-0">
-      <i class="las la-bars text-mk-background dark:text-mk-yellow-main text-2xl"></i>
-    </div>
-    <!--     <input class="hidden" type="checkbox" id="menu-toggle"> -->
-
-    <div id="nav-menu" class="sm:flex sm:items-top sm:w-auto w-full order-1 sm:order-1">
-      <nav>
-        <ul class="sm:flex items-center justify-between text-mk-blue dark:text-mk-yellow-main pt-0 sm:pt-0">
-          <li class="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl">
-            <a href="/" class="flex items-center no-underspanne link-novisited no-underline">
-              <span class="hidden sm:inline-block">   <img  src="/assets/img/logo.png" class="mr-2 w-10 h-10 rounded-full" alt="Stencil Demo" /></span>
-              <div class="ml-0.5 self-center font-semibold whitespace-nowrap text-mk-background dark:text-mk-white">Stencil Demo</div>
-          </li>
-          <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
-              href="/projects/">📋 Projects</a></li>
-          <li><a class="inline-block link-novisited hover:text-black font-medium  pt-0 pb-0 sm:pl-0 md:px-3"
-              href="/podcasts/">🎙️ Podcasts</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div id="nav-content" class="order-2 sm:order-3 flex flex-wrap flex-row-reverse flex-col-reverse items-top justify-end mr-0">
-      <div id="nav-buttons" class="flex items-center w-full sm:w-full">
-        <div class="px-4">
-          <label id="toggleDarkMode" class="relative inspanne-flex items-center cursor-pointer switch-button">
-            <input type="checkbox" class="sr-only peer">
-            <div class="flex justify-center items-center w-8 h-8 
-              bg-tg-deepdark 
-              shadow-sm
-              shadow-mk-purple-deco
-              dark:shadow-mk-yellow-main
-              rounded-full
-              peer-hover::outspanne-none 
-              peer-hover::ring-2 
-              dark:bg-mk-yellow-main 
-              dark:border-gray-600 
-              peer-checked:bg-mk-yellow-main">
-              <div class="text-mk-yellow-main dark:hidden">
-                <i class="las la-moon"></i>
-              </div>
-              <div class=" text-mk-background hidden dark:visible dark:inline">
-                <i class="las la-sun"></i>
-              </div>
+  <body class="dark:text-mk-white dark:bg-mk-background">
+    <header>
+      <nav class="relative flex items-center h-12 font-semibold">
+        <a class="text-lg mr-4 link-novisited" href="/">Stencli Theme</a>
+        <div
+          id="astro-header-drawer"
+          class="shadow rounded-l-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] md:shadow-none md:rounded-none md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in md:translate-x-0 top-12 -right-5 pl-4 pt-6 pb-4 md:p-0 h-[200px] w-[200px] z-50 translate-x-96"
+        >
+          <nav
+            class="flex h-full flex-col justify-between gap-12 text-left md:flex-row md:w-full md:gap-5"
+          >
+            <div class="flex flex-col gap-4 md:flex-row">
+              <a
+                href="/tags"
+                class="link-novisited text-opacity-60 flex items-center gap-1 text-2xl md:text-base"
+                rel="noopener noreferrer "
+              >
+                Projects
+              </a>
+              <a
+                href="/posts"
+                class="link-novisited text-opacity-60 flex items-center gap-1 text-2xl md:text-base"
+                rel="noopener noreferrer"
+                >Podcasts
+              </a>
+              <a
+                href="/posts"
+                class="link-novisited text-opacity-60 flex items-center gap-1 text-2xl md:text-base"
+                rel="noopener noreferrer"
+                >Articles
+              </a>
             </div>
-          </label>
+            <div
+              class="flex justify-center items-center md:justify-end gap-3 md:p-0"
+            >
+              <div
+                class="flex items-center gap-3 md:pl-3"
+                data-astro-transition-persist="navbar"
+              >
+                <theme-toggle class="relative h-6 w-6"
+                  ><button id="toggle-theme" class="group" aria-pressed="false">
+                    <span
+                      class="absolute text-xl left-0 right-0 top-0 opacity-0 group-aria-pressed:opacity-100"
+                      ><i class="las la-moon"></i></span
+                    ><span
+                      class="absolute text-xl left-0 right-0 top-0 opacity-0 group-aria-[pressed=false]:opacity-100"
+                      ><i class="las la-sun"></i
+                    ></span></button
+                ></theme-toggle>
+
+                <button
+                  id="astro-header-drawer-button"
+                  type="button"
+                  class="md:ml-6 md:hidden"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-menu-2"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.25"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 6l16 0"></path>
+                    <path d="M4 12l16 0"></path>
+                    <path d="M4 18l16 0"></path></svg
+                  ><span class="sr-only">Show Menu</span>
+                </button>
+              </div>
+              <span>
+                <a
+                  href="/posts"
+                  class="text-opacity-60 link-novisited"
+                  rel="noopener noreferrer "
+                  target="_blank"
+                  aria-label="blog"
+                  ><span>Blog</span></a
+                > →</span
+              >
+            </div>
+          </nav>
         </div>
-        <div class=""><a href="/posts" class="link-novisited">Блог</a> →</div>
-      </div>
-    </div>
-  </div>
-</nav>
+      </nav>
+    </header>
 
-<!-- <script>
-  var mobileMenuButton = document.getElementById("mobileMenuButton");
-  mobileMenuButton.onclick = function () {
-    document.getElementById("nav-menu").classList.toggle("hidden");
-    document.getElementById("nav-buttons").classList.toggle("flex");
-    document.getElementById("nav-buttons").classList.toggle("flex-col");
-    document.getElementById("nav-buttons").classList.toggle("space-y-2");
-  }
-  // Hide element when click outside nav
-  // var theElementContainer = document.getElementsByTagName("nav")[0];
-  // document.addEventListener('click', function(event) {
-  //   if (!theElementContainer.contains(event.target)) {
-  //     document.getElementById("menu").classList.toggle("hidden");
-  //     document.getElementById("nav-buttons").classList.toggle("flex");
-  //     document.getElementById("nav-buttons").classList.toggle("flex-col");
-  //     document.getElementById("nav-buttons").classList.toggle("space-y-2");
-  //   }
-  // });
-</script>-->
-  </header>
-  <main>
-    {{ content }}
-  </main>
-{% include "_partials/footer.liquid" %}
-  <script>
-    document.getElementById("toggleDarkMode").addEventListener("change", function () {
-      if (isDarkMode()) {
-        localStorage.theme = 'light'
-        document.documentElement.classList.remove('dark')
-      } else {
-        localStorage.theme = 'dark'
-        document.documentElement.classList.add('dark')
-      }
-    });
-  </script>
-  <script src="/assets/scripts/jquery.min.js"></script>
-  <script src="/assets/scripts/fotorama.min.js"></script>
-</body>
+    <main>
+      {{ content }}
+    </main>
+    {% include "_partials/footer.liquid" %}
+    <script>
+      const isDarkMode = () =>
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
 
+      const toggleTheme = () => {
+        const htmlElement = document.documentElement;
+        if (isDarkMode()) {
+          localStorage.theme = "light";
+          htmlElement.classList.remove("dark");
+          updateAriaPressedAttribute(false);
+        } else {
+          localStorage.theme = "dark";
+          htmlElement.classList.add("dark");
+          updateAriaPressedAttribute(true);
+        }
+      };
+
+      const updateAriaPressedAttribute = (pressed) => {
+        const themeToggle = document.getElementById("toggle-theme");
+        themeToggle.setAttribute("aria-pressed", pressed);
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("toggle-theme");
+        themeToggle.addEventListener("click", toggleTheme);
+
+        // Set initial theme based on localStorage
+        if (isDarkMode()) {
+          document.documentElement.classList.add("dark");
+          updateAriaPressedAttribute(true); // Update the initial state of the button
+        }
+      });
+    </script>
+
+    <script src="/assets/scripts/jquery.min.js"></script>
+    <script src="/assets/scripts/fotorama.min.js"></script>
+  </body>
 </html>
