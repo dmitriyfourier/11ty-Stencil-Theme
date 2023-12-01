@@ -1,0 +1,94 @@
+---
+permalink: "nav.html"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Адаптивное меню</title>
+    <link href="/assets/styles/tailwind.css" rel="stylesheet" />
+    <style>
+      @media (max-width: 640px) {
+        .nav-list {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 16px;
+          left: 0;
+          right: 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          z-index: 999;
+        }
+
+        .nav-list.show {
+          display: flex;
+        }
+
+        .nav-item {
+          padding: 8px;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .toggle-theme {
+          order: -1;
+          margin-top: 8px;
+          margin-bottom: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+    <nav class="bg-blue-500 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-white text-xl font-bold">Лого</a>
+
+        <div class="hidden sm:flex space-x-4">
+          <a href="#" class="text-white">Главная</a>
+          <a href="#" class="text-white">О нас</a>
+          <a href="#" class="text-white">Услуги</a>
+          <a href="#" class="text-white">Контакты</a>
+          <a href="#" class="text-white">Портфолио</a>
+        </div>
+
+        <div class="sm:hidden">
+          <button id="toggleNav" class="text-white">Меню</button>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="nav-list" id="navList">
+      <div class="container mx-auto flex flex-col items-center">
+        <a href="#" class="nav-item">Главная</a>
+        <a href="#" class="nav-item">О нас</a>
+        <a href="#" class="nav-item">Услуги</a>
+        <a href="#" class="nav-item">Контакты</a>
+        <a href="#" class="nav-item">Портфолио</a>
+        <button
+          class="toggle-theme bg-blue-500 text-white px-4 py-2 rounded-full mt-4"
+        >
+          Сменить тему
+        </button>
+      </div>
+    </nav>
+
+    <script>
+      const toggleNavButton = document.getElementById("toggleNav");
+      const navList = document.getElementById("navList");
+
+      toggleNavButton.addEventListener("click", () => {
+        navList.classList.toggle("show");
+      });
+
+      const toggleThemeButton = document.querySelector(".toggle-theme");
+      const body = document.body;
+
+      toggleThemeButton.addEventListener("click", () => {
+        body.classList.toggle("dark");
+      });
+    </script>
+  </body>
+</html>
