@@ -47,7 +47,7 @@
       >Stencli Theme</a
     >
     <div
-      id="astro-header-drawer"
+      id="header-drawer"
       class="grow shadow rounded-l-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] md:shadow-none md:rounded-none md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in md:translate-x-0 top-12 -right-5 pl-4 pt-6 pb-4 md:p-0 h-[200px] w-[200px] z-50 translate-x-96"
     >
       <nav
@@ -197,7 +197,7 @@
           ></span></button
       ></theme-toggle>
       <button
-        id="astro-header-drawer-button"
+        id="header-drawer-button"
         type="button"
         class="md:ml-6 md:hidden"
       >
@@ -290,33 +290,56 @@
         "(prefers-color-scheme: dark)"
       ).matches;
       const storedTheme = localStorage.getItem("theme");
-  
+
       // Если в локальном хранилище уже есть значение, используйте его
       if (storedTheme) {
         return storedTheme === "dark";
       }
-  
+
       // Иначе используйте prefers-color-scheme
       return prefersDark;
     };
-  
+
     const toggleTheme = () => {
       const isDark = isDarkMode();
       document.documentElement.classList.toggle("dark", isDark);
       localStorage.theme = isDark ? "light" : "dark";
     };
-  
+
     // Установите начальную тему
     toggleTheme();
-  
+
     // Сохранение состояния для theme в localStorage
     window.addEventListener("beforeunload", () => {
-      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
     });
-  
+
     // Добавьте обработчик события click к кнопке переключения темы
     const button = document.getElementById("toggle-theme");
     button.addEventListener("click", toggleTheme);
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const drawer = document.getElementById("header-drawer");
+      const button = document.getElementById("header-drawer-button");
+
+      const toggleDrawer = () => {
+        drawer.classList.toggle("translate-x-96");
+      };
+
+      button.addEventListener("click", toggleDrawer);
+
+      // Сохранение состояния для drawer в localStorage
+      document
+        .getElementById("header-drawer")
+        .addEventListener("transitionend", () => {
+          localStorage.drawerCollapsed = document
+            .getElementById("header-drawer")
+            .classList.contains("translate-x-96");
+        });
+    });
   </script>
   <script src="/assets/scripts/prism.js"></script>
 </body>
