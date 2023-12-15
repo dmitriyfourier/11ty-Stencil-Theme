@@ -271,65 +271,61 @@
     </main>
 
     <script>
+      const isDarkMode = () => {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const storedTheme = localStorage.getItem("theme");
+
+        // Если в локальном хранилище уже есть значение, используйте его
+        if (storedTheme) {
+          return storedTheme === "dark";
+        }
+
+        // Иначе используйте prefers-color-scheme
+        return prefersDark;
+      };
+
+      const toggleTheme = () => {
+        const isDark = isDarkMode();
+        document.documentElement.classList.toggle("dark", isDark);
+        localStorage.theme = isDark ? "light" : "dark";
+      };
+
+      // Установите начальную тему
+      toggleTheme();
+
+      // Сохранение состояния для theme в localStorage
+      window.addEventListener("beforeunload", () => {
+        localStorage.theme = document.documentElement.classList.contains("dark")
+          ? "dark"
+          : "light";
+      });
+
+      // Добавьте обработчик события click к кнопке переключения темы
+      const button = document.getElementById("toggle-theme");
+      button.addEventListener("click", toggleTheme);
+    </script>
+    <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const drawer = document.getElementById("astro-header-drawer");
-        const button = document.getElementById("astro-header-drawer-button");
-        const themeToggle = document.getElementById("toggle-theme");
-        const htmlElement = document.documentElement;
-
-        const isDarkMode = () => {
-          const prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-          ).matches;
-          const storedTheme = localStorage.theme;
-
-          // Если в локальном хранилище уже есть значение, используйте его
-          if (storedTheme) {
-            return storedTheme === "dark";
-          }
-
-          // Иначе используйте prefers-color-scheme
-          return prefersDark;
-        };
-
-        const toggleTheme = () => {
-          const isDark = isDarkMode();
-          localStorage.theme = isDark ? "light" : "dark";
-          htmlElement.classList.toggle("dark", isDark);
-          themeToggle.setAttribute("aria-pressed", !isDark);
-        };
+        const drawer = document.getElementById("header-drawer");
+        const button = document.getElementById("header-drawer-button");
 
         const toggleDrawer = () => {
           drawer.classList.toggle("translate-x-96");
         };
 
-        themeToggle.addEventListener("click", toggleTheme);
         button.addEventListener("click", toggleDrawer);
 
-        // Set initial theme based on localStorage or prefers-color-scheme
-        toggleTheme();
-
-        // Set initial drawer position based on localStorage
-        if (localStorage.drawerCollapsed === "true") {
-          drawer.classList.add("translate-x-96");
-        }
+        // Сохранение состояния для drawer в localStorage
+        document
+          .getElementById("header-drawer")
+          .addEventListener("transitionend", () => {
+            localStorage.drawerCollapsed = document
+              .getElementById("header-drawer")
+              .classList.contains("translate-x-96");
+          });
       });
-
-      // Добавим слушатель события изменения темы
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", () => {
-          toggleTheme();
-        });
-
-      // Сохранение состояния для drawer в localStorage
-      document
-        .getElementById("astro-header-drawer")
-        .addEventListener("transitionend", () => {
-          localStorage.drawerCollapsed = document
-            .getElementById("astro-header-drawer")
-            .classList.contains("translate-x-96");
-        });
     </script>
 
     <script src="/assets/scripts/jquery.min.js"></script>
